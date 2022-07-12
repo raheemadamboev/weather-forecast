@@ -1,4 +1,4 @@
-package xyz.teamgravity.weatherforecast.ui.theme
+package xyz.teamgravity.weatherforecast.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

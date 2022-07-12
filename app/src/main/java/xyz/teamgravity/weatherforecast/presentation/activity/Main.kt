@@ -1,4 +1,4 @@
-package xyz.teamgravity.weatherforecast
+package xyz.teamgravity.weatherforecast.presentation.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,9 +7,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import xyz.teamgravity.weatherforecast.ui.theme.WeatherForecastTheme
+import xyz.teamgravity.weatherforecast.presentation.theme.WeatherForecastTheme
 
-class MainActivity : ComponentActivity() {
+class Main : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

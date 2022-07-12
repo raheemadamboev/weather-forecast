@@ -1,4 +1,4 @@
-package xyz.teamgravity.weatherforecast.ui.theme
+package xyz.teamgravity.weatherforecast.presentation.theme
 
 import android.app.Activity
 import android.os.Build

@@ -32,4 +32,7 @@
 
     <!-- Errors -->
     <string name="error_unknown">Unknown error occurred!</string>
+    <string name="error_access_fine_location">Please allow fine location permission!</string>
+    <string name="error_access_coarse_location">Please allow coarse location permission!</string>
+    <string name="error_gps_not_enabled">Please turn on GPS!</string>
 </resources>

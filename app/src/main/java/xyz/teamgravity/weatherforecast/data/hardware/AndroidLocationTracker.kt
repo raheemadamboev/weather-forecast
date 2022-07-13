@@ -8,7 +8,9 @@ import android.location.Location
 import android.location.LocationManager
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import xyz.teamgravity.weatherforecast.R
 import xyz.teamgravity.weatherforecast.core.util.Resource
 import xyz.teamgravity.weatherforecast.core.util.UniversalText
@@ -22,18 +24,20 @@ class AndroidLocationTracker(
 ) : LocationTracker {
 
     override suspend fun getCurrentLocation(): Resource<Location> {
-        return when {
-            !hasAccessFineLocationPermission() -> Resource.Error(UniversalText.Resource(id = R.string.error_access_fine_location))
-            !hasAccessCoarseLocationPermission() -> Resource.Error(UniversalText.Resource(id = R.string.error_access_coarse_location))
-            !enabledGps() -> Resource.Error(UniversalText.Resource(id = R.string.error_gps_not_enabled))
-            else -> suspendCancellableCoroutine { continuation ->
-                with(client.lastLocation) {
-                    if (isComplete) continuation.resume(
-                        if (isSuccessful) Resource.Success(result) else Resource.Error(UniversalText.Resource(id = R.string.error_unknown))
-                    )
-                    addOnSuccessListener { continuation.resume(Resource.Success(it)) }
-                    addOnFailureListener { continuation.resume(Resource.Error(UniversalText.Resource(R.string.error_unknown))) }
-                    addOnCanceledListener { continuation.cancel() }
+        return withContext(Dispatchers.Default) {
+            return@withContext when {
+                !hasAccessFineLocationPermission() -> Resource.Error(UniversalText.Resource(id = R.string.error_access_fine_location))
+                !hasAccessCoarseLocationPermission() -> Resource.Error(UniversalText.Resource(id = R.string.error_access_coarse_location))
+                !enabledGps() -> Resource.Error(UniversalText.Resource(id = R.string.error_gps_not_enabled))
+                else -> suspendCancellableCoroutine { continuation ->
+                    with(client.lastLocation) {
+                        if (isComplete) continuation.resume(
+                            if (isSuccessful) Resource.Success(result) else Resource.Error(UniversalText.Resource(id = R.string.error_unknown))
+                        )
+                        addOnSuccessListener { continuation.resume(Resource.Success(it)) }
+                        addOnFailureListener { continuation.resume(Resource.Error(UniversalText.Resource(R.string.error_unknown))) }
+                        addOnCanceledListener { continuation.cancel() }
+                    }
                 }
             }
         }

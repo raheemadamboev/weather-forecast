@@ -33,7 +33,7 @@ fun WeatherDto.toWeatherModel(): WeatherModel {
     val now = LocalDateTime.now()
     val currentWeatherData = weatherData.getOrNull(0)?.find {
         val hour = if (now.minute < 30) now.hour else now.hour + 1
-        it.time.hour == hour
+        return@find it.time.hour == hour
     }
     return WeatherModel(
         weatherDataPerDay = weatherData,

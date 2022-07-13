@@ -24,7 +24,6 @@ abstract class AbstractionModule {
     @Singleton
     abstract fun bindWeatherRepository(weatherRepositoryImp: WeatherRepositoryImp): WeatherRepository
 
-
     @Binds
     @Singleton
     abstract fun bindLocationTracker(androidLocationTracker: AndroidLocationTracker): LocationTracker

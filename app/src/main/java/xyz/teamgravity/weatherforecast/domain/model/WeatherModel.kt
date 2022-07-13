@@ -1,13 +1,6 @@
 package xyz.teamgravity.weatherforecast.domain.model
 
-import xyz.teamgravity.weatherforecast.core.util.WeatherType
-import java.time.LocalDateTime
-
 data class WeatherModel(
-    val time: LocalDateTime,
-    val type: WeatherType,
-    val temperatureCelsius: Double,
-    val pressure: Double,
-    val windSpeed: Double,
-    val humidity: Double,
+    val weatherDataPerDay: List<List<WeatherDataModel>>, // 0-6 indexed for future days, second list contains 0-23 indexed hours for the day
+    val currentWeatherData: WeatherDataModel?,
 )

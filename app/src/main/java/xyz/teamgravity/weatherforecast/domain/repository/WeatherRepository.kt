@@ -11,5 +11,5 @@ interface WeatherRepository {
     // GET
     ///////////////////////////////////////////////////////////////////////////
 
-    suspend fun getWeather(latitude: Double, longitude: Double): Flow<Resource<WeatherModel>>
+    fun getWeather(latitude: Double, longitude: Double): Flow<Resource<WeatherModel>>
 }

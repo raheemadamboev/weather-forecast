@@ -16,7 +16,7 @@ class WeatherRepositoryImp(
     // GET
     ///////////////////////////////////////////////////////////////////////////
 
-    override suspend fun getWeather(latitude: Double, longitude: Double): Flow<Resource<WeatherModel>> {
+    override fun getWeather(latitude: Double, longitude: Double): Flow<Resource<WeatherModel>> {
         return datasource.getWeather(latitude = latitude, longitude = longitude).map { resource ->
             return@map when (resource) {
                 is Resource.Success -> Resource.Success(resource.data!!.toWeatherModel())

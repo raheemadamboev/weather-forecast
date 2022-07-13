@@ -17,7 +17,7 @@ class WeatherDataSource(
     // GET
     ///////////////////////////////////////////////////////////////////////////
 
-    suspend fun getWeather(latitude: Double, longitude: Double): Flow<Resource<WeatherDto>> {
+    fun getWeather(latitude: Double, longitude: Double): Flow<Resource<WeatherDto>> {
         return flow {
             emit(Resource.Loading())
             try {

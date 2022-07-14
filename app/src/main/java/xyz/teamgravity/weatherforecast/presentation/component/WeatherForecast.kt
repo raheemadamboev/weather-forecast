@@ -14,16 +14,13 @@ import xyz.teamgravity.weatherforecast.domain.model.WeatherDataModel
 
 @Composable
 fun WeatherForecast(
-    data: List<WeatherDataModel>
+    data: List<WeatherDataModel>,
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-    ) {
+    Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             text = stringResource(id = R.string.today),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
         LazyRow {

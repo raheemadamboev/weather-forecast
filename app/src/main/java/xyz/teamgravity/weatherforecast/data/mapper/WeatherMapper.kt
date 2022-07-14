@@ -31,10 +31,14 @@ fun WeatherDataDto.sortedWithDaysAndHours(): List<List<WeatherDataModel>> {
 fun WeatherDto.toWeatherModel(): WeatherModel {
     val weatherData = data.sortedWithDaysAndHours()
     val now = LocalDateTime.now()
-    val currentWeatherData = weatherData.getOrNull(0)?.find {
-        val hour = if (now.minute < 30) now.hour else now.hour + 1
-        return@find it.time.hour == hour
-    }
+
+    // get current time weather data by hour
+    val currentWeatherData =
+        if (now.hour == 23 && now.minute > 29) {
+            weatherData.getOrNull(1)?.getOrNull(0)
+        } else {
+            weatherData.getOrNull(0)?.getOrNull(if (now.minute < 30) now.hour else now.hour + 1)
+        }
     return WeatherModel(
         weatherDataPerDay = weatherData,
         currentWeatherData = currentWeatherData

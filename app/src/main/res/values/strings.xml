@@ -46,4 +46,7 @@
 
     <!-- Content Descriptions -->
     <string name="cd_weather_today_type">Today\'s weather type</string>
+    <string name="cd_pressure_in_hpa">Pressure in hpa</string>
+    <string name="cd_humidity_in_percent">Humidity in percent</string>
+    <string name="cd_wind_speed_in_km_hour">Wind speed in kilometers hour</string>
 </resources>

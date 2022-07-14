@@ -49,16 +49,19 @@ fun WeatherCard(
             ) {
                 WeatherDataDisplay(
                     icon = R.drawable.ic_pressure,
+                    contentDescription = R.string.cd_pressure_in_hpa,
                     value = weather.pressure.roundToInt(),
                     unit = stringResource(id = R.string.hpa)
                 )
                 WeatherDataDisplay(
                     icon = R.drawable.ic_drop,
+                    contentDescription = R.string.cd_humidity_in_percent,
                     value = weather.humidity.roundToInt(),
                     unit = stringResource(id = R.string.percent)
                 )
                 WeatherDataDisplay(
                     icon = R.drawable.ic_wind,
+                    contentDescription = R.string.cd_wind_speed_in_km_hour,
                     value = weather.windSpeed.roundToInt(),
                     unit = stringResource(id = R.string.km_hour)
                 )

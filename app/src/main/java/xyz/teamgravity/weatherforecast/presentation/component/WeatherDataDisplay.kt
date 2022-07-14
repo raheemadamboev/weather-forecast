@@ -16,9 +16,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun WeatherDataDisplay(
+    @DrawableRes icon: Int,
     value: Int,
     unit: String,
-    @DrawableRes icon: Int,
 ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Icon(

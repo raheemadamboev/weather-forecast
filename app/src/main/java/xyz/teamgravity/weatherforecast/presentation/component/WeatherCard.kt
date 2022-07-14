@@ -3,12 +3,14 @@ package xyz.teamgravity.weatherforecast.presentation.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import xyz.teamgravity.weatherforecast.R
@@ -20,7 +22,10 @@ import kotlin.math.roundToInt
 fun WeatherCard(
     weather: WeatherDataModel,
 ) {
-    Card(modifier = Modifier.padding(16.dp)) {
+    Card(
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.padding(16.dp)
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -29,20 +34,27 @@ fun WeatherCard(
         ) {
             Text(
                 text = stringResource(id = R.string.your_today, weather.time.format(DateTimeFormatter.ofPattern("HH:mm"))),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Medium,
                 modifier = Modifier.align(Alignment.End)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Image(
                 painter = painterResource(id = weather.type.icon),
                 contentDescription = stringResource(id = R.string.cd_weather_today_type),
-                modifier = Modifier.width(200.dp)
+                modifier = Modifier.width(160.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = stringResource(id = R.string.your_celsius, weather.temperature.toString()),
+                text = stringResource(id = R.string.your_celsius, weather.temperature.roundToInt()),
                 fontSize = 50.sp
             )
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(5.dp))
+            Text(
+                text = weather.type.name.asString(),
+                fontWeight = FontWeight.Medium
+            )
+            Spacer(modifier = Modifier.height(30.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround

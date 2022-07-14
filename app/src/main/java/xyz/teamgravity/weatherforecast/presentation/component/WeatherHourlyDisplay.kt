@@ -1,10 +1,8 @@
 package xyz.teamgravity.weatherforecast.presentation.component
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -17,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import xyz.teamgravity.weatherforecast.R
 import xyz.teamgravity.weatherforecast.domain.model.WeatherDataModel
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
 
 @Composable
 fun WeatherHourlyDisplay(
@@ -26,19 +25,23 @@ fun WeatherHourlyDisplay(
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier
-            .height(100.dp)
-            .padding(horizontal = 16.dp)
+        modifier = Modifier.padding(horizontal = 16.dp)
     ) {
-        Text(text = time)
+        Text(
+            text = time,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
+            fontWeight = FontWeight.W400
+        )
+        Spacer(modifier = Modifier.height(10.dp))
         Image(
             painter = painterResource(id = weather.type.icon),
-            contentDescription = weather.type.name.asString()
+            contentDescription = weather.type.name.asString(),
+            modifier = Modifier.size(40.dp)
         )
+        Spacer(modifier = Modifier.height(10.dp))
         Text(
-            text = stringResource(id = R.string.your_celsius, weather.temperature),
-            fontWeight = FontWeight.Bold
+            text = stringResource(id = R.string.your_celsius, weather.temperature.roundToInt()),
+            fontWeight = FontWeight.Medium
         )
     }
 }

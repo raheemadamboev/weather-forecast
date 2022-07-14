@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import xyz.teamgravity.weatherforecast.R
 import xyz.teamgravity.weatherforecast.domain.model.WeatherDataModel
@@ -20,6 +21,7 @@ fun WeatherForecast(
         Text(
             text = stringResource(id = R.string.today),
             style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.W400,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))

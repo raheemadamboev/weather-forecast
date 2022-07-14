@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import xyz.teamgravity.weatherforecast.R
+import xyz.teamgravity.weatherforecast.core.constant.Const
 import xyz.teamgravity.weatherforecast.domain.model.WeatherDataModel
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
@@ -21,7 +22,7 @@ import kotlin.math.roundToInt
 fun WeatherHourlyDisplay(
     weather: WeatherDataModel,
 ) {
-    val time = remember(weather) { weather.time.format(DateTimeFormatter.ofPattern("HH:mm")) }
+    val time = remember(weather) { weather.time.format(DateTimeFormatter.ofPattern(Const.PATTERN_HOUR_MINUTE)) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

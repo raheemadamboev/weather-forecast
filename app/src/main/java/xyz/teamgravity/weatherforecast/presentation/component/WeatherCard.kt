@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import xyz.teamgravity.weatherforecast.R
+import xyz.teamgravity.weatherforecast.core.constant.Const
 import xyz.teamgravity.weatherforecast.domain.model.WeatherDataModel
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
@@ -33,7 +34,7 @@ fun WeatherCard(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.your_today, weather.time.format(DateTimeFormatter.ofPattern("HH:mm"))),
+                text = stringResource(id = R.string.your_today, weather.time.format(DateTimeFormatter.ofPattern(Const.PATTERN_HOUR_MINUTE))),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier.align(Alignment.End)

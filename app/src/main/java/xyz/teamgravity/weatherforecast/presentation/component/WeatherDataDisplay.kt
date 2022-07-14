@@ -20,7 +20,6 @@ fun WeatherDataDisplay(
     unit: String,
     @DrawableRes icon: Int,
 ) {
-
     Row(verticalAlignment = Alignment.CenterVertically) {
         Icon(
             painter = painterResource(id = icon),

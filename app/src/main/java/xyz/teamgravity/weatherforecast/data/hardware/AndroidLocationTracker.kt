@@ -34,7 +34,11 @@ class AndroidLocationTracker(
                         if (isComplete) continuation.resume(
                             if (isSuccessful) Resource.Success(result) else Resource.Error(UniversalText.Resource(id = R.string.error_unknown))
                         )
-                        addOnSuccessListener { continuation.resume(Resource.Success(it)) }
+                        addOnSuccessListener {
+                            continuation.resume(
+                                if (it == null) Resource.Error(UniversalText.Resource(R.string.error_unknown)) else Resource.Success(it)
+                            )
+                        }
                         addOnFailureListener { continuation.resume(Resource.Error(UniversalText.Resource(R.string.error_unknown))) }
                         addOnCanceledListener { continuation.cancel() }
                     }

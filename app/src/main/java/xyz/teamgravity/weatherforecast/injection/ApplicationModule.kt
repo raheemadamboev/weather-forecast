@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import timber.log.Timber
 import xyz.teamgravity.weatherforecast.data.hardware.AndroidLocationTracker
 import xyz.teamgravity.weatherforecast.data.remote.api.WeatherApi
 import xyz.teamgravity.weatherforecast.data.remote.api.WeatherApiConst
@@ -67,4 +68,8 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideGetLocation(locationTracker: LocationTracker): GetLocation = GetLocation(locationTracker)
+
+    @Provides
+    @Singleton
+    fun provideTimberDebugTree(): Timber.DebugTree = Timber.DebugTree()
 }

@@ -30,6 +30,6 @@ fun WeatherDataDisplay(
             modifier = Modifier.size(25.dp)
         )
         Spacer(modifier = Modifier.width(4.dp))
-        Text(text = derivedStateOf { "$value$unit" }.value)
+        Text(text = derivedStateOf { "$value $unit" }.value)
     }
 }

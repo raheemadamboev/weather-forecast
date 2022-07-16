@@ -12,15 +12,15 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import xyz.teamgravity.weatherforecast.core.util.Resource
 import xyz.teamgravity.weatherforecast.core.util.UniversalText
-import xyz.teamgravity.weatherforecast.domain.hardware.LocationTracker
 import xyz.teamgravity.weatherforecast.domain.model.WeatherModel
-import xyz.teamgravity.weatherforecast.domain.repository.WeatherRepository
+import xyz.teamgravity.weatherforecast.domain.usecase.GetLocation
+import xyz.teamgravity.weatherforecast.domain.usecase.GetWeather
 import javax.inject.Inject
 
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
-    private val repository: WeatherRepository,
-    private val location: LocationTracker,
+    private val getWeather: GetWeather,
+    private val getLocation: GetLocation,
 ) : ViewModel() {
 
     var weather: WeatherModel? by mutableStateOf(null)
@@ -44,7 +44,7 @@ class WeatherViewModel @Inject constructor(
     }
 
     private suspend fun getCurrentLocation() {
-        when (val result = location.getCurrentLocation()) {
+        when (val result = getLocation()) {
             is Resource.Success -> {
                 observeWeather(result.data!!)
             }
@@ -57,7 +57,7 @@ class WeatherViewModel @Inject constructor(
     }
 
     private suspend fun observeWeather(location: Location) {
-        repository.getWeather(latitude = location.latitude, longitude = location.longitude).collectLatest { result ->
+        getWeather(latitude = location.latitude, longitude = location.longitude).collectLatest { result ->
             when (result) {
                 is Resource.Success -> {
                     loading = false

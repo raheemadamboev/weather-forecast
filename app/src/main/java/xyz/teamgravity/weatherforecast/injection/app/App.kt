@@ -1,4 +1,4 @@
-package xyz.teamgravity.weatherforecast.injection
+package xyz.teamgravity.weatherforecast.injection.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

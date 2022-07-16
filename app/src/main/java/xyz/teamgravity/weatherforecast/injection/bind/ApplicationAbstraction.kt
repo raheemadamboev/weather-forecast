@@ -1,4 +1,4 @@
-package xyz.teamgravity.weatherforecast.injection
+package xyz.teamgravity.weatherforecast.injection.bind
 
 import dagger.Binds
 import dagger.Module
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class AbstractionModule {
+abstract class ApplicationAbstraction {
 
     @Binds
     @Singleton

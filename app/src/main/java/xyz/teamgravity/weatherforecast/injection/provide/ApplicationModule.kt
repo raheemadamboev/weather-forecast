@@ -1,4 +1,4 @@
-package xyz.teamgravity.weatherforecast.injection
+package xyz.teamgravity.weatherforecast.injection.provide
 
 import android.app.Application
 import com.google.android.gms.location.FusedLocationProviderClient

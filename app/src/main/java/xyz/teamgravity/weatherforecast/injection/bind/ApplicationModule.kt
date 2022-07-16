@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class ApplicationAbstraction {
+abstract class ApplicationModule {
 
     @Binds
     @Singleton

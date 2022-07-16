@@ -7,7 +7,7 @@ import xyz.teamgravity.weatherforecast.data.remote.dto.WeatherDto
 interface WeatherApi {
 
     ///////////////////////////////////////////////////////////////////////////
-    // Get
+    // GET
     ///////////////////////////////////////////////////////////////////////////
 
     @GET("/v1/forecast?hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m,pressure_msl")
